@@ -1,5 +1,5 @@
 // Internal imports
-const Utils = require('../utils/api');
+const Utils = require('../utils/trials');
 
 // Define the datalayer class for the trials
 class TrialsData {

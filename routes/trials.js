@@ -5,7 +5,8 @@ const fs = require('fs');
 
 // Internal imports
 const TrialsData = require('../data/trials');
-const Utils = require('../utils/api');
+const ApiUtils = require('../utils/api');
+const TrialsUtils = require('../utils/trials');
 
 // Defines the router
 const Trials = express.Router();
@@ -19,9 +20,9 @@ Trials.get('/:sponsor', (req, res) => {
       trialsData.getBySponsor(req.params.sponsor, callback);
     },
     (arg, callback) => {
-      Utils.formatTrials(arg, callback);
+      TrialsUtils.formatTrials(arg, callback);
     }
-  ], (err, arg) => Utils.handleErrors(err, arg, res));
+  ], (err, arg) => ApiUtils.handleErrors(err, arg, res));
 });
 
 // Returns all the trials
@@ -31,9 +32,9 @@ Trials.get('/', (req, res) => {
       trialsData.getAll(callback);
     },
     (arg, callback) => {
-      Utils.formatTrials(arg, callback);
+      TrialsUtils.formatTrials(arg, callback);
     }
-  ], (err, arg) => Utils.handleErrors(err, arg, res));
+  ], (err, arg) => ApiUtils.handleErrors(err, arg, res));
 });
 
 // Exports
